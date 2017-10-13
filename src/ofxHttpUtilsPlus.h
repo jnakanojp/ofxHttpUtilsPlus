@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include "ofxHttpUtils.h"
+#include "Poco/Net/HTTPRequest.h"
 
 class ofxHttpUtilsPlus : public ofxHttpUtils {
 
@@ -18,8 +19,7 @@ public:
     ofxHttpUtilsPlus();
     ~ofxHttpUtilsPlus();
     
-    ofxHttpResponse putData(string url, const ofBuffer & data, string contentType="");
-    
+    ofxHttpResponse putData(string url, const ofBuffer & data, string contentType="", string method = Poco::Net::HTTPRequest::HTTP_PUT);
 };
 
 

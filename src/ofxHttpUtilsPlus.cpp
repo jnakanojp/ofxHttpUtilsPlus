@@ -35,7 +35,7 @@ ofxHttpUtilsPlus::~ofxHttpUtilsPlus(){
     
 }
 
-ofxHttpResponse ofxHttpUtilsPlus::putData(string url, const ofBuffer &data, string contentType){
+ofxHttpResponse ofxHttpUtilsPlus::putData(string url, const ofBuffer &data, string contentType, string method){
     ofxHttpResponse response;
     try{
         URI uri( url.c_str() );
@@ -43,7 +43,7 @@ ofxHttpResponse ofxHttpUtilsPlus::putData(string url, const ofBuffer &data, stri
         if (path.empty()) path = "/";
         
         //HTTPClientSession session(uri.getHost(), uri.getPort());
-        HTTPRequest req(HTTPRequest::HTTP_PUT, path, HTTPMessage::HTTP_1_1);
+        HTTPRequest req(method, path, HTTPMessage::HTTP_1_1);
         if(auth.getUsername()!="") auth.authenticate(req);
         
         if(sendCookies){
